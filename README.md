@@ -571,3 +571,10 @@ Do not immediately rewrite everything.
 8. Suggest improvements with reasons.
 
 Fix confirmed issues and explain the important changes made.
+
+
+### Deployment
+
+1. Frontend Deployed in Vercel
+2. Backend Deployed in Render
+3. MongoDB Atlas used for database
