@@ -1,12 +1,13 @@
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, BadgeCheck, Building2, LockKeyhole } from "lucide-react";
+import { ArrowRight, BadgeCheck, Building2, Eye, EyeOff, LockKeyhole } from "lucide-react";
 import { AdminApiError, loginAdmin } from "./admin.api";
 
 export default function AdminLoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
@@ -98,17 +99,30 @@ export default function AdminLoginPage() {
               <label htmlFor="admin-password" className="mb-2 block text-sm font-semibold text-slate-800">
                 Password
               </label>
-              <input
-                id="admin-password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                className="h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10"
-                placeholder="Enter your password"
-              />
+              <div className="relative">
+                <input
+                  id="admin-password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  autoComplete="current-password"
+                  required
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  className="h-12 w-full rounded-xl border border-slate-200 bg-white px-4 pr-12 text-sm outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10"
+                  placeholder="Enter your password"
+                />
+                <button
+                  type="button"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  aria-pressed={showPassword}
+                  onClick={() => setShowPassword((visible) => !visible)}
+                  className="cursor-pointer absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 transition hover:text-slate-800"
+                >
+                  {showPassword
+                    ? <EyeOff aria-hidden="true" className="h-4 w-4" />
+                    : <Eye aria-hidden="true" className="h-4 w-4" />}
+                </button>
+              </div>
             </div>
 
             {error && (
