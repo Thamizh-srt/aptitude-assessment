@@ -4,9 +4,6 @@
       "source": "/api/:path*",
       "destination": "https://aptitude-assessment-j2gw.onrender.com/api/:path*"
     },
-    {
-      "source": "/:path*",
-      "destination": "/"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
