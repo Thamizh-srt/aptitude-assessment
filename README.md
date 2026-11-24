@@ -361,7 +361,12 @@ themes supplied during development included:
 
 These are summaries of the requests, not verbatim prompt transcripts.
 
-## Key Prompts :
+## Key Prompts
+
+The selected prompts below are grouped by the purpose of the work they
+requested.
+
+### 1. Architecture and Requirements Analysis
 
   Act as a Senior Full Stack Software Architect.
 
@@ -395,6 +400,11 @@ Identify potential technical challenges, edge cases and ambiguities in the assig
 Do not generate code yet. Explain your architectural decisions and wait for my approval.
 
 
+### 2. Candidate Registration and Validation
+
+This original prompt requested Prisma; the final implementation uses
+MongoDB/Mongoose, as documented in the architecture and setup sections.
+
 Implement the complete candidate registration module according to the assignment.
 
 Requirements:
@@ -423,6 +433,8 @@ Ensure duplicate registrations are prevented at the database level as well.
 Use a polished corporate SaaS design. Do not use dummy data.
 
 Test valid registration, invalid inputs and duplicate email scenarios before completing.
+
+### 3. Candidate Assessment Experience
 
 Implement the complete candidate aptitude examination module.
 
@@ -463,6 +475,8 @@ Test all navigation, persistence, timer and submission scenarios.
 
 Use a clean, distraction-free examination UI suitable for a professional aptitude test.
 
+### 4. Backend Scoring and Candidate Results
+
 Implement the complete assessment scoring and result module.
 
 Calculate scores exclusively on the backend.
@@ -494,6 +508,7 @@ Store the complete result in the database.
 
 Write unit tests for scoring calculations, including negative scores and boundary cases.
 
+### 5. Administrator Question and Candidate Management
 
 Implement the complete admin management modules.
 
@@ -540,7 +555,7 @@ Use backend pagination and filtering rather than loading the entire dataset into
 All actions must be functional and connected to the database.
 
 
-## Code review prompt for every phase : 
+### 6. Senior Full-Stack Code Review
 
    Review the code you just implemented as a senior full-stack developer.
 
