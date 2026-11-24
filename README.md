@@ -162,14 +162,8 @@ Configure these in `server/.env`:
 | `CLIENT_ORIGIN` | No | Allowed browser origin; defaults to `http://localhost:5173` |
 | `ADMIN_EMAIL` | Yes | Email for the seeded administrator |
 | `ADMIN_PASSWORD` | Yes | Initial administrator password; at least 8 characters |
-| `MAIL_MAILER` | Candidate portal | Set to `smtp` to enable email verification |
-| `MAIL_HOST` | Candidate portal | SMTP host, e.g. `smtp.gmail.com` |
-| `MAIL_PORT` | Candidate portal | SMTP port, e.g. `587` for TLS |
-| `MAIL_USERNAME` | Candidate portal | SMTP account username |
-| `MAIL_PASSWORD` | Candidate portal | SMTP password or provider app password; keep it in ignored `server/.env` |
-| `MAIL_ENCRYPTION` | Candidate portal | `tls` for STARTTLS or `ssl` for implicit TLS |
-| `MAIL_FROM_ADDRESS` | Candidate portal | Verified sender address |
-| `MAIL_FROM_NAME` | No | Optional sender display name |
+| `BREVO_API_KEY` | Candidate portal | Brevo API key; keep it in the server's secret environment |
+| `MAIL_FROM` | Candidate portal | Sender email address verified in Brevo |
 | `NODE_ENV` | No | `development`, `test`, or `production`; production cookies are Secure |
 
 There is no shared production admin password in the repository. The administrator
@@ -300,8 +294,8 @@ generated server-side and protects untrusted formula-leading text values.
   browser origin.
 - Email verification codes are bcrypt-hashed, expire after 15 minutes, are
   single-use, allow at most five guesses, and are protected by resend and
-  per-IP request limits. SMTP must be configured; the API fails closed when it
-  is unavailable.
+  per-IP request limits. Brevo email delivery uses its HTTPS API; both email
+  settings must be configured or verification fails closed.
 - Express Helmet, JSON body-size limits, explicit CORS origin, Zod validation,
   unique database indexes, and centralized error handling are enabled.
 - Correct answers are not returned in candidate test state; review keys are
@@ -330,9 +324,8 @@ when connected to a standalone MongoDB server.
 1. Provision MongoDB Atlas with transaction support, configure network access,
    and use a least-privilege database user.
 2. Set `MONGO_URI`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `CLIENT_ORIGIN`,
-   all `MAIL_*` SMTP settings, `NODE_ENV=production`, and the API `PORT` in the
-   server's secret environment. Configure a verified sender and restrict SMTP
-   credentials to mail delivery.
+   `BREVO_API_KEY`, `MAIL_FROM`, `NODE_ENV=production`, and the API `PORT` in
+   the server's secret environment. Verify the sender address in Brevo first.
 3. Install dependencies and build:
 
    ```powershell
