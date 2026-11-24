@@ -161,7 +161,7 @@ Configure these in `server/.env`:
 | `PORT` | No | Express port; defaults to `4000` |
 | `CLIENT_ORIGIN` | No | Allowed browser origin; defaults to `http://localhost:5173` |
 | `ADMIN_EMAIL` | Yes | Email for the seeded administrator |
-| `ADMIN_PASSWORD` | Yes | Initial administrator password; at least 12 characters |
+| `ADMIN_PASSWORD` | Yes | Initial administrator password; at least 8 characters |
 | `MAIL_MAILER` | Candidate portal | Set to `smtp` to enable email verification |
 | `MAIL_HOST` | Candidate portal | SMTP host, e.g. `smtp.gmail.com` |
 | `MAIL_PORT` | Candidate portal | SMTP port, e.g. `587` for TLS |

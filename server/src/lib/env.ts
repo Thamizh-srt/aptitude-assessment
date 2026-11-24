@@ -11,7 +11,7 @@ const envSchema = z.object({
   PORT: z.coerce.number().int().positive().default(4000),
   CLIENT_ORIGIN: z.string().url().default("http://localhost:5173"),
   ADMIN_EMAIL: z.string().email(),
-  ADMIN_PASSWORD: z.string().min(12),
+  ADMIN_PASSWORD: z.string().min(8),
   MAIL_MAILER: z.preprocess(
     (value) => (value === "" ? undefined : value),
     z.literal("smtp").optional(),
